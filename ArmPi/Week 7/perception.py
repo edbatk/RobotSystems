@@ -89,6 +89,8 @@ class perception():
             if (show_frame):
                 cv2.imshow('Frame', Frame)
             return Frame
+        else:
+            print('Error no image')
             
     def process(self,Frame,show_frame=False):
         img_copy = Frame.copy()
