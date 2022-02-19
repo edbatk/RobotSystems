@@ -23,7 +23,7 @@ class perception():
             'white': (255, 255, 255),
         }
         self.camera = camera
-        self.camera.camera_open()
+        # self.camera.camera_open()
         self.target_color = ()
         self.grip = 500 # servo grip angle
         self.count = 0
@@ -163,6 +163,7 @@ if __name__ == "__main__":
     percep = perception(camera)
     # percep.reset()
     while True:
+        print('entering perception')
         img = percep.get_image(camera,show_frame=True)
         print('image collected')
         if img is not None:
