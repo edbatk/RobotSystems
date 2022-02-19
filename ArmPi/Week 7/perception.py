@@ -77,10 +77,12 @@ class perception():
         self.last_x = 0
         self.last_y = 0
     
-    def get_image(self,show_frame=False,target_color='red'):
+    def get_image(self,camera,show_frame=False,target_color='red'):
         self.target_color = target_color
         print(f"my_camera: {self.camera}")
-        img = self.camera.frame()
+        camera_open()
+        # img = self.camera.frame()
+        img = camera.frame()
         print(f"image: {img}")
         if img is not None:
             frame = img.copy()
@@ -160,7 +162,7 @@ if __name__ == "__main__":
     percep = perception(camera)
     # percep.reset()
     while True:
-        img = percep.get_image(show_frame=(True))
+        img = percep.get_image(camera,how_frame=(True))
         print('image collected')
         if img is not None:
             process_img = percep.process(img,show_frame=(True))
