@@ -33,6 +33,7 @@ class Camera:
 
     def camera_open(self):
         try:
+            print('camera opening!')
             self.cap = cv2.VideoCapture(-1)
             self.cap.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter_fourcc('Y', 'U', 'Y', 'V'))
             self.cap.set(cv2.CAP_PROP_FPS, 30)
