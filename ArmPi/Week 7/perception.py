@@ -58,8 +58,6 @@ class perception():
     def reset(self):
         self.grip = 500 # servo grip angle
         self.count = 0
-        self.track = False
-        self._stop = False
         self.get_roi = False
         self.center_list = []
         self.first_move = True
@@ -158,8 +156,9 @@ class perception():
         
 if __name__ == "__main__":
     camera = Camera.Camera()
+    print(f"camera: {camera}")
     percep = perception(camera)
-    percep.reset()
+    # percep.reset()
     while True:
         img = percep.get_image(show_frame=(True))
         print('image collected')
