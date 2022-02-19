@@ -81,6 +81,7 @@ class perception():
     def get_image(self,show_frame=False,target_color='red'):
         self.target_color = target_color
         my_camera = self.camera
+        print(f"my_camera: {my_camera}")
         my_camera.camera_open()
         img = my_camera.frame
         if img is not None:
@@ -168,6 +169,9 @@ if __name__ == "__main__":
             found_img = percep.find(process_img,show_frame=(True))
             print('block found')
             key = cv2.waitKey(1) 
+            if key == 27:
+                break
+        else:
             if key == 27:
                 break
     camera.camera_close()
