@@ -81,7 +81,7 @@ class perception():
     
     def get_image(self,show_frame=False,target_color='red'):
         self.target_color = target_color
-        print(f"my_camera: {my_camera}")
+        print(f"my_camera: {self.camera}")
         img = self.camera.frame
         print(f"image: {img}")
         if img is not None:
