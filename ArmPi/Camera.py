@@ -40,6 +40,7 @@ class Camera:
             self.cap.set(cv2.CAP_PROP_FPS, 30)
             self.cap.set(cv2.CAP_PROP_SATURATION, 40)
             self.opened = True
+            print('finished opening')
         except Exception as e:
             print('打开摄像头失败:', e)
 
