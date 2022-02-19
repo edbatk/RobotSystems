@@ -158,12 +158,12 @@ if __name__ == "__main__":
     percep = perception(camera)
     percep.reset()
     while True:
-        img = percep.get_image()
+        img = percep.get_image(show_frame=(True))
         print('image collected')
         if img is not None:
-            process_img = percep.process(img)
+            process_img = percep.process(img,show_frame=(True))
             print('image processed')
-            found_img = percep.find(process_img)
+            found_img = percep.find(process_img,show_frame=(True))
             print('block found')
             key = cv2.waitKey(1) 
             if key == 27:
