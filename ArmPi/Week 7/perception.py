@@ -14,7 +14,7 @@ import HiwonderSDK.Board as Board
 from CameraCalibration.CalibrationConfig import *
 
 class perception():
-    def __init__(self,camera):
+    def __init__(self):
         self.range_rgb = {
             'red': (0, 0, 255),
             'blue': (255, 0, 0),
@@ -81,8 +81,6 @@ class perception():
     def get_image(self,camera,show_frame=False,target_color='red'):
         self.target_color = target_color
         print(f"my_camera: {self.camera}")
-        camera.camera_open()
-        print('camera opened')
         # img = self.camera.frame()
         img = camera.frame()
         print(f"image: {img}")
@@ -161,6 +159,8 @@ class perception():
 if __name__ == "__main__":
     camera = Camera.Camera()
     print(f"camera: {camera}")
+    camera.camera_open()
+    print('camera opened')
     percep = perception(camera)
     # percep.reset()
     while True:
