@@ -82,6 +82,7 @@ class perception():
         self.target_color = target_color
         print(f"my_camera: {self.camera}")
         camera.camera_open()
+        print('camera opened')
         # img = self.camera.frame()
         img = camera.frame()
         print(f"image: {img}")
