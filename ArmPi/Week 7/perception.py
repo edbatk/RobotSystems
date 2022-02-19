@@ -159,9 +159,12 @@ if __name__ == "__main__":
     percep.reset()
     while True:
         img = percep.get_image()
+        print('image collected')
         if img is not None:
             process_img = percep.process(img)
+            print('image processed')
             found_img = percep.find(process_img)
+            print('block found')
             key = cv2.waitKey(1) 
             if key == 27:
                 break
