@@ -2,6 +2,7 @@
 # coding=utf8
 import sys
 sys.path.append('/home/pi/School/RobotSystems/ArmPi/')
+sys.path.append('/home/pi/ArmPi/')
 import cv2
 import time
 import Camera
@@ -80,7 +81,7 @@ class perception():
     def get_image(self,camera,show_frame=False,target_color='red'):
         self.target_color = target_color
         print(f"my_camera: {self.camera}")
-        camera_open()
+        camera.camera_open()
         # img = self.camera.frame()
         img = camera.frame()
         print(f"image: {img}")
