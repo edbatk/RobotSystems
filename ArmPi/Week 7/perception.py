@@ -84,6 +84,7 @@ class perception():
         print(f"my_camera: {my_camera}")
         my_camera.camera_open()
         img = my_camera.frame
+        print(f"image: {img}")
         if img is not None:
             frame = img.copy()
             Frame = run(frame)  
@@ -172,6 +173,7 @@ if __name__ == "__main__":
             if key == 27:
                 break
         else:
+            key = cv2.waitKey(1) 
             if key == 27:
                 break
     camera.camera_close()
