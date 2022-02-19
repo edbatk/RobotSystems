@@ -22,6 +22,7 @@ class perception():
             'white': (255, 255, 255),
         }
         self.camera = camera
+        self.camera.camera_open()
         self.target_color = ()
         self.grip = 500 # servo grip angle
         self.count = 0
@@ -173,8 +174,6 @@ if __name__ == "__main__":
             if key == 27:
                 break
         else:
-            key = cv2.waitKey(1) 
-            if key == 27:
-                break
+            break
     camera.camera_close()
     cv2.destroyAllWindows()
