@@ -155,7 +155,7 @@ class perception():
         
 if __name__ == "__main__":
     camera = Camera.Camera()
-    percep = Perception(camera)
+    percep = perception(camera)
     while True:
         img = percep.get_image()
         if img is not None:
