@@ -158,7 +158,6 @@ class perception():
 if __name__ == "__main__":
     camera = Camera.Camera()
     percep = perception(camera)
-    print(f"img: {img}")
     # percep.reset()
     while True:
         print('entering perception')
