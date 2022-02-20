@@ -80,7 +80,7 @@ class Perception():
                 opened = cv2.morphologyEx(frame_mask, cv2.MORPH_OPEN, np.ones((6, 6), np.uint8))  # open operation
                 closed = cv2.morphologyEx(opened, cv2.MORPH_CLOSE, np.ones((6, 6), np.uint8))  # closed operation
                 contours = cv2.findContours(closed, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)[-2]  # find the outline
-                areaMaxContour, area_max = getAreaMaxContour(contours)  # find the largest contour
+                areaMaxContour, area_max = self.getAreaMaxContour(contours)  # find the largest contour
         if area_max > 2500:  # have found the largest area
             rect = cv2.minAreaRect(areaMaxContour)
             box = np.int0(cv2.boxPoints(rect))
