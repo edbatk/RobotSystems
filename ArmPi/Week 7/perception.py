@@ -34,33 +34,9 @@ class Perception():
         
         self.camera = camera
         self.camera.camera_open()
-        
-        
-    # def __init__(self, camera) -> None:
-    #     self.range_rgb = {
-    #         'red': (0, 0, 255),
-    #         'blue': (255, 0, 0),
-    #         'green': (0, 255, 0),
-    #         'black': (0, 0, 0),
-    #         'white': (255, 255, 255)
-    #     }
-        
-    #     self.size = (640, 480)
-
-    #     # Garbo
-    #     self.count = 0
-    #     self.get_roi = False
-    #     self.detect_color = 'None'
-    #     self.target_color = ()
-        
-    #     # Camera from which to receive frames
-    #     self.camera = camera
-    #     self.camera.camera_open() 
     
     def get_image(self,show_frame=False,target_color='red'):
         self.target_color = target_color
-        print(f"my_camera: {self.camera}")
-        img = self.camera.frame
         print(f"image: {img}")
         if img is not None:
             frame = img.copy()
@@ -71,18 +47,18 @@ class Perception():
         else:
             print('Error no image')
             
-    def get_frame(self, show_frame=False):
-        """ retrieves a frame from the camera
-        :params bool show_frame: show the frame or not
-        """
-        img = self.camera.frame
-        if img is not None:
-            print('img acquired')
-            frame = img.copy()
-            if show_frame:
-                cv2.imshow('Raw Frame', frame)
-            return frame
-        return None
+    # def get_frame(self, show_frame=False):
+    #     """ retrieves a frame from the camera
+    #     :params bool show_frame: show the frame or not
+    #     """
+    #     img = self.camera.frame
+    #     if img is not None:
+    #         print('img acquired')
+    #         frame = img.copy()
+    #         if show_frame:
+    #             cv2.imshow('Raw Frame', frame)
+    #         return frame
+    #     return None
             
     def process(self,Frame,show_frame=False):
         img_copy = Frame.copy()
@@ -151,24 +127,18 @@ if __name__ == "__main__":
     camera = Camera.Camera()
     percep = Perception(camera)
     while True:
-        print('entering perception')
-        img = percep.get_frame(show_frame=True)
-        
-        
-        
-        # print('image collected')
-        # if img is not None:
-        #     process_img = percep.process(img,show_frame=(True))
-        #     print('image processed')
-        #     found_img = percep.find(process_img,show_frame=(True))
-        #     print('block found')
-        #     key = cv2.waitKey(1) 
-        #     if key == 27:
-        #         break
+        # img = percep.get_frame(show_frame=True)
+        img = percep.get_img(show_frame=True)
+        if img is not None:
+            process_img = percep.process(img,show_frame=(True))
+            found_img = percep.find(process_img,show_frame=(True))
+            key = cv2.waitKey(1) 
+            if key == 27:
+                break
         # else:
         #     break
-        key = cv2.waitKey(1)
-        if key == 27:
-            break
+        # key = cv2.waitKey(1)
+        # if key == 27:
+        #     break
     camera.camera_close()
     cv2.destroyAllWindows()
