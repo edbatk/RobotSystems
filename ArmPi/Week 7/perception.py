@@ -73,7 +73,7 @@ class Perception():
     def find(self,frame_lab,show_frame=False):
         area_max = 0
         areaMaxContour = 0
-        for i in self.color_range:
+        for i in color_range:
             if j in self.target_color:
                 detect_color = j
                 frame_mask = cv2.inRange(frame_lab, color_range[detect_color][0], color_range[detect_color][1])  # Bitwise operations on the original image and mask
