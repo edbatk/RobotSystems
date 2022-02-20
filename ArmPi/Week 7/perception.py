@@ -88,8 +88,8 @@ class Perception():
             roi = getROI(box) # get roi region
             get_roi = True
 
-            img_centerx, img_centery = getCenter(rect, roi, size, square_length)  # Get the coordinates of the center of the block
-            self.world_x, self.world_y = convertCoordinate(img_centerx, img_centery, size) # Convert to real world coordinates
+            img_centerx, img_centery = getCenter(rect, roi, self.size, square_length)  # Get the coordinates of the center of the block
+            self.world_x, self.world_y = convertCoordinate(img_centerx, img_centery, self.size) # Convert to real world coordinates
             
             
             cv2.drawContours(img, [box], -1, range_rgb[detect_color], 2)
