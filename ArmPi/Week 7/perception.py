@@ -163,6 +163,7 @@ if __name__ == "__main__":
     print('camera opened')
     percep = perception()
     img = camera.frame
+    print(f"img: {img}")
     # percep.reset()
     while True:
         print('entering perception')
