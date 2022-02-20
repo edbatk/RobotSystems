@@ -2,7 +2,6 @@
 # coding=utf8
 import sys
 sys.path.append('/home/pi/School/RobotSystems/ArmPi/')
-# sys.path.append('/home/pi/ArmPi/')
 import cv2
 import time
 import Camera
@@ -14,7 +13,7 @@ import HiwonderSDK.Board as Board
 from CameraCalibration.CalibrationConfig import *
 
 class perception():
-    def __init__(self):
+    def __init__(self,camera):
         self.range_rgb = {
             'red': (0, 0, 255),
             'blue': (255, 0, 0),
@@ -23,7 +22,7 @@ class perception():
             'white': (255, 255, 255),
         }
         self.camera = camera
-        # self.camera.camera_open()
+        self.camera.camera_open()
         self.target_color = ()
         self.grip = 500 # servo grip angle
         self.count = 0
@@ -78,10 +77,10 @@ class perception():
         self.last_x = 0
         self.last_y = 0
     
-    def get_image(self,camera,img,show_frame=False,target_color='red'):
+    def get_image(self,show_frame=False,target_color='red'):
         self.target_color = target_color
         print(f"my_camera: {self.camera}")
-        # img = self.camera.frame()
+        img = self.camera.frame
         
         print(f"image: {img}")
         if img is not None:
@@ -158,16 +157,12 @@ class perception():
         
 if __name__ == "__main__":
     camera = Camera.Camera()
-    print(f"camera: {camera}")
-    camera.camera_open()
-    print('camera opened')
-    percep = perception()
-    img = camera.frame
+    percep = perception(camera)
     print(f"img: {img}")
     # percep.reset()
     while True:
         print('entering perception')
-        img = percep.get_image(camera,img,show_frame=True)
+        img = percep.get_image(show_frame=True)
         print('image collected')
         if img is not None:
             process_img = percep.process(img,show_frame=(True))
