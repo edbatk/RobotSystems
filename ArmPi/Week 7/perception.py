@@ -161,7 +161,7 @@ if __name__ == "__main__":
     print(f"camera: {camera}")
     camera.camera_open()
     print('camera opened')
-    percep = perception(camera)
+    percep = perception()
     # percep.reset()
     while True:
         print('entering perception')
