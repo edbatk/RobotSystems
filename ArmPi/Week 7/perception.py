@@ -166,7 +166,7 @@ if __name__ == "__main__":
         #         break
         # else:
         #     break
-    
+        key = cv2.waitKey(1)
         if key == 27:
             break
     camera.camera_close()
