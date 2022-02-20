@@ -12,49 +12,50 @@ import HiwonderSDK.Board as Board
 from CameraCalibration.CalibrationConfig import *
 
 class Perception():
-    # def __init__(self,camera) -> None:
-    #     self.range_rgb = {
-    #         'red': (0, 0, 255),
-    #         'blue': (255, 0, 0),
-    #         'green': (0, 255, 0),
-    #         'black': (0, 0, 0),
-    #         'white': (255, 255, 255),
-    #     },
-        
-
-    #     self.size = (640, 480)
-
-    #     self.world_x = 0
-    #     self.world_Y = 0
-    #     self.world_x = 0
-    #     self.world_y = 0
-    #     self.last_x = 0
-    #     self.last_y = 0
-        
-    #     self.camera = camera
-    #     self.camera.camera_open()
-    #     self.target_color = ()
-        
-    def __init__(self, camera) -> None:
+    def __init__(self,camera) -> None:
         self.range_rgb = {
             'red': (0, 0, 255),
             'blue': (255, 0, 0),
             'green': (0, 255, 0),
             'black': (0, 0, 0),
-            'white': (255, 255, 255)
-        }
+            'white': (255, 255, 255),
+        },
         
+
         self.size = (640, 480)
 
-        # Garbo
-        self.count = 0
-        self.get_roi = False
-        self.detect_color = 'None'
+        self.world_x = 0
+        self.world_Y = 0
+        self.world_x = 0
+        self.world_y = 0
+        self.last_x = 0
+        self.last_y = 0
         self.target_color = ()
         
-        # Camera from which to receive frames
         self.camera = camera
-        self.camera.camera_open() 
+        self.camera.camera_open()
+        
+        
+    # def __init__(self, camera) -> None:
+    #     self.range_rgb = {
+    #         'red': (0, 0, 255),
+    #         'blue': (255, 0, 0),
+    #         'green': (0, 255, 0),
+    #         'black': (0, 0, 0),
+    #         'white': (255, 255, 255)
+    #     }
+        
+    #     self.size = (640, 480)
+
+    #     # Garbo
+    #     self.count = 0
+    #     self.get_roi = False
+    #     self.detect_color = 'None'
+    #     self.target_color = ()
+        
+    #     # Camera from which to receive frames
+    #     self.camera = camera
+    #     self.camera.camera_open() 
     
     def get_image(self,show_frame=False,target_color='red'):
         self.target_color = target_color
