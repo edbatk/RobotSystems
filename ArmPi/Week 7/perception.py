@@ -128,7 +128,7 @@ if __name__ == "__main__":
     percep = Perception(camera)
     while True:
         # img = percep.get_frame(show_frame=True)
-        img = percep.get_img(show_frame=True)
+        img = percep.get_image(show_frame=True)
         if img is not None:
             process_img = percep.process(img,show_frame=(True))
             found_img = percep.find(process_img,show_frame=(True))
