@@ -37,15 +37,12 @@ class Perception():
     
     def get_image(self,show_frame=False,target_color='red'):
         self.target_color = target_color
-        print(f"image: {img}")
         if img is not None:
             frame = img.copy()
             Frame = run(frame)  
             if (show_frame):
                 cv2.imshow('Frame', Frame)
             return Frame
-        else:
-            print('Error no image')
             
     # def get_frame(self, show_frame=False):
     #     """ retrieves a frame from the camera
