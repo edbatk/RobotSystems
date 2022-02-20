@@ -62,12 +62,12 @@ class Perception():
         img_h, img_w = img_copy.shape[:2]
         cv2.line(img, (0, int(img_h / 2)), (img_w, int(img_h / 2)), (0, 0, 200), 1)
         cv2.line(img, (int(img_w / 2), 0), (int(img_w / 2), img_h), (0, 0, 200), 1)
-        frame_resize = cv2.resize(img_copy, size, interpolation=cv2.INTER_NEAREST)
+        frame_resize = cv2.resize(img_copy, self.size, interpolation=cv2.INTER_NEAREST)
         frame_gb = cv2.GaussianBlur(frame_resize, (11, 11), 11)
         # If an area is detected with a recognized object, the area is detected until there are none
         if get_roi and start_pick_up:
             get_roi = False
-            frame_gb = getMaskROI(frame_gb, roi, size)           
+            frame_gb = getMaskROI(frame_gb, roi, self.size)           
         frame_lab = cv2.cvtColor(frame_gb, cv2.COLOR_BGR2LAB)  # Convert image to LAB space
         if (show_frame):
             cv2.imshow('Frame Lab', frame_lab)
