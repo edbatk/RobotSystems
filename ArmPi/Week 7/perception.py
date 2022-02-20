@@ -5,14 +5,13 @@ sys.path.append('/home/pi/School/RobotSystems/ArmPi/')
 import cv2
 import time
 import Camera
-import threading
 from LABConfig import *
 from ArmIK.Transform import *
 from ArmIK.ArmMoveIK import *
 import HiwonderSDK.Board as Board
 from CameraCalibration.CalibrationConfig import *
 
-class perception():
+class Perception():
     def __init__(self,camera) -> None:
         self.range_rgb = {
             'red': (0, 0, 255),
@@ -20,49 +19,21 @@ class perception():
             'green': (0, 255, 0),
             'black': (0, 0, 0),
             'white': (255, 255, 255),
-        }
+        },
+        
+
+        self.size = (640, 480)
+
+        self.world_x = 0
+        self.world_Y = 0
+        self.world_x = 0
+        self.world_y = 0
+        self.last_x = 0
+        self.last_y = 0
+        
         self.camera = camera
         self.camera.camera_open()
         self.target_color = ()
-
-        self.size = (640, 480)
-
-        self.world_x = 0
-        self.world_Y = 0
-        self.world_x = 0
-        self.world_y = 0
-        self.last_x = 0
-        self.last_y = 0
-
-        self.color_range = {
-        'red': [(0, 151, 100), (255, 255, 255)], 
-        'green': [(0, 0, 0), (255, 115, 255)], 
-        'blue': [(0, 0, 0), (255, 255, 110)], 
-        'black': [(0, 0, 0), (56, 255, 255)], 
-        'white': [(193, 0, 0), (255, 250, 255)], 
-        }
-        
-    def reset(self):
-        self.grip = 500 # servo grip angle
-        self.count = 0
-        self.get_roi = False
-        self.center_list = []
-        self.first_move = True
-        self.__isRunning = False
-        self.detect_color = 'None'
-        self.action_finish = True
-        self.start_pick_up = False
-        self.start_count_t1 = True
-        self.rect = None
-        self.size = (640, 480)
-        self.rotation_angle = 0
-        self.unreachable = False
-        self.world_x = 0
-        self.world_Y = 0
-        self.world_x = 0
-        self.world_y = 0
-        self.last_x = 0
-        self.last_y = 0
     
     def get_image(self,show_frame=False,target_color='red'):
         self.target_color = target_color
@@ -84,6 +55,7 @@ class perception():
         """
         img = self.camera.frame
         if img is not None:
+            print('img acquired')
             frame = img.copy()
             if show_frame:
                 cv2.imshow('Raw Frame', frame)
@@ -155,7 +127,7 @@ class perception():
         
 if __name__ == "__main__":
     camera = Camera.Camera()
-    percep = perception(camera)
+    percep = Perception(camera)
     # percep.reset()
     while True:
         print('entering perception')
