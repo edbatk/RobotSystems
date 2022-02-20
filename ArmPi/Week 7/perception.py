@@ -70,7 +70,7 @@ class Perception():
             cv2.imshow('Frame Lab', frame_lab)
         return frame_lab
     
-    def find(self,frame_lab,show_frame=False):
+    def find(self,frame_lab,img,show_frame=False):
         area_max = 0
         areaMaxContour = 0
         for i in color_range:
@@ -125,7 +125,7 @@ if __name__ == "__main__":
         img = percep.get_image(show_frame=True)
         if img is not None:
             process_img = percep.process(img,show_frame=(True))
-            found_img = percep.find(process_img,show_frame=(True))
+            found_img = percep.find(process_img,img,show_frame=(True))
             key = cv2.waitKey(1) 
             if key == 27:
                 break
