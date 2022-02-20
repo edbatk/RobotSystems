@@ -37,6 +37,7 @@ class Perception():
     
     def get_image(self,show_frame=False,target_color='red'):
         self.target_color = target_color
+        img = self.camera.frame
         if img is not None:
             frame = img.copy()
             Frame = run(frame)  
