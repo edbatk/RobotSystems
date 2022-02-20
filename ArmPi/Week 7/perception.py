@@ -35,7 +35,7 @@ class Perception():
         self.camera = camera
         self.camera.camera_open()
     
-    def get_image(self,show_frame=False,target_color='red'):
+    def get_image(self,show_frame=False,target_color=('red',)):
         self.target_color = target_color
         img = self.camera.frame
         if img is not None:
@@ -101,7 +101,7 @@ class Perception():
             if (show_frame):
                 cv2.imshow('Found Frame', img)
             
-            return img
+            return img, (world_x, world_y)
         
     def getAreaMaxContour(self,contours):
         contour_area_temp = 0
