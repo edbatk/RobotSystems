@@ -40,10 +40,9 @@ class Perception():
         img = self.camera.frame
         if img is not None:
             frame = img.copy()
-            Frame = run(frame)  
             if (show_frame):
-                cv2.imshow('Frame', Frame)
-            return Frame
+                cv2.imshow('Frame', frame)
+            return frame
             
     # def get_frame(self, show_frame=False):
     #     """ retrieves a frame from the camera
