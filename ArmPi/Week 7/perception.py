@@ -24,22 +24,9 @@ class perception():
         self.camera = camera
         self.camera.camera_open()
         self.target_color = ()
-        self.grip = 500 # servo grip angle
-        self.count = 0
-        self.track = False
-        self._stop = False
-        self.get_roi = False
-        self.center_list = []
-        self.first_move = True
-        self.__isRunning = False
-        self.detect_color = 'None'
-        self.action_finish = True
-        self.start_pick_up = False
-        self.start_count_t1 = True
-        self.rect = None
+
         self.size = (640, 480)
-        self.rotation_angle = 0
-        self.unreachable = False
+
         self.world_x = 0
         self.world_Y = 0
         self.world_x = 0
@@ -81,7 +68,6 @@ class perception():
         self.target_color = target_color
         print(f"my_camera: {self.camera}")
         img = self.camera.frame
-        
         print(f"image: {img}")
         if img is not None:
             frame = img.copy()
@@ -91,6 +77,18 @@ class perception():
             return Frame
         else:
             print('Error no image')
+            
+    def get_frame(self, show_frame=False):
+        """ retrieves a frame from the camera
+        :params bool show_frame: show the frame or not
+        """
+        img = self.camera.frame
+        if img is not None:
+            frame = img.copy()
+            if show_frame:
+                cv2.imshow('Raw Frame', frame)
+            return frame
+        return None
             
     def process(self,Frame,show_frame=False):
         img_copy = Frame.copy()
@@ -161,7 +159,8 @@ if __name__ == "__main__":
     # percep.reset()
     while True:
         print('entering perception')
-        img = percep.get_image(show_frame=True)
+        # img = percep.get_image(show_frame=True)
+        img = percep.get_frame(show_frame=True)
         print('image collected')
         if img is not None:
             process_img = percep.process(img,show_frame=(True))
