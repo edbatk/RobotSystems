@@ -19,9 +19,16 @@ class Perception():
             'green': (0, 255, 0),
             'black': (0, 0, 0),
             'white': (255, 255, 255),
-        },
+        }
         
-
+        self.color_range = {
+        'red': [(0, 151, 100), (255, 255, 255)], 
+        'green': [(0, 0, 0), (255, 115, 255)], 
+        'blue': [(0, 0, 0), (255, 255, 110)], 
+        'black': [(0, 0, 0), (56, 255, 255)], 
+        'white': [(193, 0, 0), (255, 250, 255)], 
+        }
+        
         self.size = (640, 480)
 
         self.world_x = 0
@@ -73,10 +80,10 @@ class Perception():
     def find(self,frame_lab,img,show_frame=False):
         area_max = 0
         areaMaxContour = 0
-        for i in color_range:
+        for i in self.color_range:
             if i in self.target_color:
                 detect_color = i
-                frame_mask = cv2.inRange(frame_lab, color_range[detect_color][0], color_range[detect_color][1])  # Bitwise operations on the original image and mask
+                frame_mask = cv2.inRange(frame_lab, self.color_range[detect_color][0], self.color_range[detect_color][1])  # Bitwise operations on the original image and mask
                 opened = cv2.morphologyEx(frame_mask, cv2.MORPH_OPEN, np.ones((6, 6), np.uint8))  # open operation
                 closed = cv2.morphologyEx(opened, cv2.MORPH_CLOSE, np.ones((6, 6), np.uint8))  # closed operation
                 contours = cv2.findContours(closed, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)[-2]  # find the outline
