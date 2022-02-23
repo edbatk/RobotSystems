@@ -108,7 +108,7 @@ class Perception():
             if (show_frame):
                 cv2.imshow('Found Frame', img)
             
-            return img, (world_x, world_y)
+            return img, (self.world_x, self.world_y)
         
     def getAreaMaxContour(self,contours):
         contour_area_temp = 0
