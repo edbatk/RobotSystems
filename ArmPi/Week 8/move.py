@@ -12,6 +12,8 @@ from ArmIK.ArmMoveIK import *
 import HiwonderSDK.Board as Board
 from CameraCalibration.CalibrationConfig import *
 
+AK = ArmIK()
+
 def initMove():
     servo1 = 500
     Board.setBusServoPulse(1, servo1 - 50, 300)
