@@ -57,6 +57,7 @@ class Motion():
         self.sweep((0, 10, 10), -30, -30, -90)
     
 if __name__ == "__main__":
-    initMove()
-    sweep((-15 + 0.5, 6 - 0.5,  1.5),-90,-90,0)
+    arm = Motion()
+    arm.initMove()
+    arm.sweep((-15 + 0.5, 6 - 0.5,  1.5),-90,-90,0)
 
