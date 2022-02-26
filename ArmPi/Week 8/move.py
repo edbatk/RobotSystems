@@ -51,7 +51,7 @@ class Motion():
         Board.setBusServoPulse(2, a, 500)
         time.sleep(1)
 
-    def initMove():
+    def initMove(self):
         self.close_claw
         self.rotate_claw(512)
         self.sweep((0, 10, 10), -30, -30, -90)
