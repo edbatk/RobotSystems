@@ -36,8 +36,21 @@ class Motion():
         movetime is the rotation time of the steering gear, the unit is ms, if the time is not given, it will be automatically calculated
         """
         angle = self.move.setPitchRangeMoving((x,y,z),a,a1,a2)
-        time.sleep(0.25)
+        time.sleep(2)
         return angle
+
+    def move_obj(self,pos1,pos2):
+        self.sweep(pos1[0],pos1[1]- 2, 5, -90, -90, 0)
+        self.open_claw()
+        self.rotate_claw(getAngle(pos1[0],pos1[1],pos1[2]))
+        self.sweep(pos1[0], pos1[1], 2, -90, -90, 0)
+        self.close_claw()
+        self.sweep(pos1[0], pos1[1], 12, -90, -90, 0)
+        self.sweep(pos2[0],pos2[1],pos2[2],-90,-90,0)
+        self.rotate_claw(getAngle(pos2[0],pos2[1],pos2[2]))
+        self.open_claw()
+        self.sweep(pos2[0], pos2[1], 12, -90, -90, 0)
+        self.initMove()
 
     def close_claw(self):
         Board.setBusServoPulse(1, self.neutral - 50, 300)
@@ -52,12 +65,11 @@ class Motion():
         time.sleep(1)
 
     def initMove(self):
-        self.close_claw
+        self.close_claw()
         self.rotate_claw(512)
         self.sweep(0, 10, 10, -30, -30, -90)
     
 if __name__ == "__main__":
     arm = Motion()
     arm.initMove()
-    arm.sweep(-15 + 0.5, 6 - 0.5,  1.5,-60,-60,25)
-    arm.initMove()
+    arm.move_obj((-15 + 0.5, 12 - 0.5, -90), (-1.66, 15, -62))
