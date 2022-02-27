@@ -22,6 +22,7 @@ class Motion():
             'green': (-15 + 0.5, 6 - 0.5,  1.5),
             'blue':  (-15 + 0.5, 0 - 0.5,  1.5),
         }
+        self.done = False
     
     
     def sweep(self,x,y,z,a,a1,a2):
@@ -45,18 +46,20 @@ class Motion():
         pos1 (initial object position) :  tuple (x,y,rotation_angle)
         pos2 (new destined object position) : tuple (x,y,rotation_angle,z)
         """
-        self.sweep(pos1[0],pos1[1]- 2, 5, -90, -90, 0) # lower arm
-        self.open_claw() # open claw
-        self.rotate_claw(getAngle(pos1[0],pos1[1],pos1[2])) # rotate claw to grasp
-        self.sweep(pos1[0], pos1[1], 2, -90, -90, 0) # move claw to positon 1
-        self.close_claw() # grasp
-        self.sweep(pos1[0], pos1[1], 12, -90, -90, 0) # raise arm
-        self.sweep(pos2[0],pos2[1],pos2[2]+10,-90,-90,0) # move claw to above position 2
-        self.sweep(pos2[0],pos2[1],pos2[2],-90,-90,0) # lower claw to position 2
-        self.rotate_claw(getAngle(pos2[0],pos2[1],pos2[3])) # rotate claw to release
-        self.open_claw() # release object
-        self.sweep(pos2[0], pos2[1], 12, -90, -90, 0) # raise arm
-        self.initMove() # move back to home
+        while not self.done:
+            self.sweep(pos1[0],pos1[1]- 2, 5, -90, -90, 0) # lower arm
+            self.open_claw() # open claw
+            self.rotate_claw(getAngle(pos1[0],pos1[1],pos1[2])) # rotate claw to grasp
+            self.sweep(pos1[0], pos1[1], 2, -90, -90, 0) # move claw to positon 1
+            self.close_claw() # grasp
+            self.sweep(pos1[0], pos1[1], 12, -90, -90, 0) # raise arm
+            self.sweep(pos2[0],pos2[1],pos2[2]+10,-90,-90,0) # move claw to above position 2
+            self.sweep(pos2[0],pos2[1],pos2[2],-90,-90,0) # lower claw to position 2
+            self.rotate_claw(getAngle(pos2[0],pos2[1],pos2[3])) # rotate claw to release
+            self.open_claw() # release object
+            self.sweep(pos2[0], pos2[1], 12, -90, -90, 0) # raise arm
+            self.initMove() # move back to home
+            self.done = True
 
     def close_claw(self):
         Board.setBusServoPulse(1, self.neutral - 50, 300)
