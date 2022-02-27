@@ -40,17 +40,22 @@ class Motion():
         return angle
 
     def move_obj(self,pos1,pos2):
-        self.sweep(pos1[0],pos1[1]- 2, 5, -90, -90, 0)
-        self.open_claw()
-        self.rotate_claw(getAngle(pos1[0],pos1[1],pos1[2]))
-        self.sweep(pos1[0], pos1[1], 2, -90, -90, 0)
-        self.close_claw()
-        self.sweep(pos1[0], pos1[1], 12, -90, -90, 0)
-        self.sweep(pos2[0],pos2[1],pos2[2],-90,-90,0)
-        self.rotate_claw(getAngle(pos2[0],pos2[1],pos2[2]))
-        self.open_claw()
-        self.sweep(pos2[0], pos2[1], 12, -90, -90, 0)
-        self.initMove()
+        """
+        Grasp an object from a location and place it
+        pos1 (initial object position) :  tuple (x,y,rotation_angle)
+        pos2 (new destined object position) : tuple (x,y,rotation_angle,z)
+        """
+        self.sweep(pos1[0],pos1[1]- 2, 5, -90, -90, 0) # lower arm
+        self.open_claw() # open claw
+        self.rotate_claw(getAngle(pos1[0],pos1[1],pos1[2])) # rotate claw to grasp
+        self.sweep(pos1[0], pos1[1], 2, -90, -90, 0) # move claw to positon 1
+        self.close_claw() # grasp
+        self.sweep(pos1[0], pos1[1], 12, -90, -90, 0) # raise arm
+        self.sweep(pos2[0],pos2[1],pos2[2],-90,-90,0) # move claw to position 2
+        self.rotate_claw(getAngle(pos2[0],pos2[1],pos2[3])) # rotate claw to release
+        self.open_claw() # release object
+        self.sweep(pos2[0], pos2[1], 12, -90, -90, 0) # raise arm
+        self.initMove() # move back to home
 
     def close_claw(self):
         Board.setBusServoPulse(1, self.neutral - 50, 300)
@@ -72,4 +77,4 @@ class Motion():
 if __name__ == "__main__":
     arm = Motion()
     arm.initMove()
-    arm.move_obj((-15 + 0.5, 12 - 0.5, -90), (-1.66, 15, -62))
+    arm.move_obj((-15 + 0.5, 12 - 0.5, -90), (-1.66, 15, 2, -62))
