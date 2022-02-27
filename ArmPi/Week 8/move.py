@@ -51,7 +51,8 @@ class Motion():
         self.sweep(pos1[0], pos1[1], 2, -90, -90, 0) # move claw to positon 1
         self.close_claw() # grasp
         self.sweep(pos1[0], pos1[1], 12, -90, -90, 0) # raise arm
-        self.sweep(pos2[0],pos2[1],pos2[2],-90,-90,0) # move claw to position 2
+        self.sweep(pos2[0],pos2[1],pos2[2]+10,-90,-90,0) # move claw to above position 2
+        self.sweep(pos2[0],pos2[1],pos2[2],-90,-90,0) # lower claw to position 2
         self.rotate_claw(getAngle(pos2[0],pos2[1],pos2[3])) # rotate claw to release
         self.open_claw() # release object
         self.sweep(pos2[0], pos2[1], 12, -90, -90, 0) # raise arm
