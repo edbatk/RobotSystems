@@ -2,7 +2,7 @@
 # coding=utf8
 import numpy as np
 import sys
-import pandas as pd
+# import pandas as pd
 sys.path.append('/home/pi/School/RobotSystems/ArmPi/')
 sys.path.append('/home/ryan/Documents/RobotSystems/RobotSystems/ArmPi')
 import time
