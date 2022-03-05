@@ -86,10 +86,6 @@ if __name__ == "__main__":
         time.sleep(0.5)
         print('enter command: x, y, z, pitch angle, low bound, high bound')
         x,y,z,a,a1,a2 = input().split()
-        
-        if x == "end":
-            break
-        
         x = int(x)
         y = int(y)
         z = int(z)
@@ -100,9 +96,15 @@ if __name__ == "__main__":
         
         print(f"x: {x}, y: {y}, z: {z}, a: {a}, a1: {a1}, a2 {a2}")
         print(f"Moving...")
-        
         arm.sweep(x,y,z,a,a1,2)
         time.sleep(0.5)
+        
+        print("continue? (y/n)")
+        in_cont = input()
+        if in_cont == "y" or in_cont == "Y":
+            break
+        
+        
         print("")
 
         
