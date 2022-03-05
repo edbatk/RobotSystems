@@ -21,8 +21,9 @@ if __name__ == "__main__":
     arm = Motion()
     doodle = DoodleInput()
     
-    coords = pd.read_csv('draw_coords.csv')
-    coords = coords.to_numpy()
+    # coords = pd.read_csv('draw_coords.csv')
+    # coords = coords.to_numpy()
+    coords = np.loadtxt('draw_coords.csv', delimiter=",")
     coords = coords/10
     
     print("Starting Masta' Peace! (˘ ³˘)♥ ")
