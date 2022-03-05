@@ -36,7 +36,7 @@ class Motion():
         movetime is the rotation time of the steering gear, the unit is ms, if the time is not given, it will be automatically calculated
         """
         angle = self.move.setPitchRangeMoving((x,y,z),a,a1,a2)
-        time.sleep(2)
+        # time.sleep(2)
         return angle
 
     def move_obj(self,pos1,pos2):

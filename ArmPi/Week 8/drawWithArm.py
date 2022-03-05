@@ -45,7 +45,7 @@ if __name__ == "__main__":
     for i in range(len(coords)):
         print(f"current coordinates: {coords[i]}")
         arm.sweep(coords[i,0],coords[i,1],10,0,-180,180)
-        # time.sleep(0.01)
+        time.sleep(0.1)
         
     print("All done!")
     
