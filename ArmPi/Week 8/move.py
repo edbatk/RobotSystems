@@ -87,7 +87,7 @@ if __name__ == "__main__":
         x,y,z,a,a1,a2 = input().split()
         print(f"x: {x}, y: {y}, z: {z}, a: {a}, a1: {a1}, a2 {a2}")
         print(f"Moving...")
-        self.sweep(x,y,z,a,a1,2)
+        arm.sweep(x,y,z,a,a1,2)
         time.sleep(0.5)
         print("")
         
