@@ -28,7 +28,10 @@ if __name__ == "__main__":
     
     print("Starting Masta' Peace! (˘ ³˘)♥ ")
     
-    for i in len(test):
+    arm.sweep(coords[0,0],coords[0,1],10,0,-180,180)
+    time.sleep(0.5)
+    
+    for i in len(coords):
         arm.sweep(coords[i,0],coords[i,1],10,0,-180,180)
         time.sleep(0.1)
         
