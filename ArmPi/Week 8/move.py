@@ -80,11 +80,17 @@ if __name__ == "__main__":
     arm = Motion()
     arm.initMove()
     # arm.move_obj((-15 + 0.5, 12 - 0.5, -90), (-1.66, 15, 2, -62))
-
+    key = cv2.waitKey(1) 
     while True:
         time.sleep(0.5)
         print('enter command: x, y, z, pitch angle, low bound, high bound')
         x,y,z,a,a1,a2 = input().split()
         print(f"x: {x}, y: {y}, z: {z}, a: {a}, a1: {a1}, a2 {a2}")
+        print(f"Moving...")
+        self.sweep(x,y,z,a,a1,2)
+        time.sleep(0.5)
         print("")
+        
+        if key == 27:
+            break
         
