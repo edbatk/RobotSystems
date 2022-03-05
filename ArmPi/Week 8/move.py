@@ -92,7 +92,14 @@ if __name__ == "__main__":
         a = int(a)
         a1 = int(a1)
         a2 = int(a2)
-
+        
+        print(type(x))
+        print(type(y))
+        print(type(z))
+        print(type(a))
+        print(type(a1))
+        print(type(a2))
+        
         print(f"x: {x}, y: {y}, z: {z}, a: {a}, a1: {a1}, a2 {a2}")
         print(f"Moving...")
         arm.sweep(x,y,z,a,a1,2)
