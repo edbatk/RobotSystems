@@ -25,6 +25,13 @@ if __name__ == "__main__":
     # coords = coords.to_numpy()
     coords = np.loadtxt('draw_coords.csv', delimiter=",")
     coords = coords/10
+    coords = np.round(coords)
+    
+    i = 1
+    while i < len(coords):
+        if (coords[i] == coords[i-1]).all():
+            coords = np.delete(coords, i-1, 0)
+        i = i + 1
     
     print("Starting Masta' Peace! (˘ ³˘)♥ ")
     
