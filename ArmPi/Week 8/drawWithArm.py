@@ -18,3 +18,4 @@ from doodleInput import DoodleInput
 if __name__ == "__main__":
     arm = Motion()
     doodle = DoodleInput()
+    print("HERE")
