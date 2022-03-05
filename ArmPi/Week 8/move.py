@@ -84,7 +84,7 @@ if __name__ == "__main__":
     while True:
         time.sleep(0.5)
         print('enter command: x, y, z, pitch angle, low bound, high bound')
-        x,y,z,a,a1,a2 = input()
+        x,y,z,a,a1,a2 = input().split()
         print(f"x: {x}, y: {y}, z: {z}, a: {a}, a1: {a1}, a2 {a2}")
         print("")
         
