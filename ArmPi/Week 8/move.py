@@ -92,8 +92,7 @@ if __name__ == "__main__":
         a = int(a)
         a1 = int(a1)
         a2 = int(a2)
-        
-        
+         
         print(f"x: {x}, y: {y}, z: {z}, a: {a}, a1: {a1}, a2 {a2}")
         print(f"Moving...")
         arm.sweep(x,y,z,a,a1,2)
@@ -102,8 +101,7 @@ if __name__ == "__main__":
         print("continue? (y/n)")
         in_cont = input()
         if in_cont == "n" or in_cont == "N":
-            break
-        
+            break 
         
         print("")
 
