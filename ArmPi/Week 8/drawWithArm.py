@@ -27,12 +27,15 @@ if __name__ == "__main__":
     coords = coords/10
     coords = np.round(coords)
     
+    coords[:,0] -= 10
+    coords[:,1] += 15
+    
     i = 1
     while i < len(coords):
         if (coords[i] == coords[i-1]).all():
             coords = np.delete(coords, i-1, 0)
         else:
-            i = i + 1
+            i += 1
     
     print("Starting Masta' Peace! (˘ ³˘)♥ ")
     
@@ -42,7 +45,7 @@ if __name__ == "__main__":
     for i in range(len(coords)):
         print(f"current coordinates: {coords[i]}")
         arm.sweep(coords[i,0],coords[i,1],10,0,-180,180)
-        time.sleep(0.1)
+        time.sleep(0.01)
         
     print("All done!")
     
