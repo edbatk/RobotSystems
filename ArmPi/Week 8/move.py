@@ -101,7 +101,7 @@ if __name__ == "__main__":
         
         print("continue? (y/n)")
         in_cont = input()
-        if in_cont == "y" or in_cont == "Y":
+        if in_cont == "n" or in_cont == "N":
             break
         
         
