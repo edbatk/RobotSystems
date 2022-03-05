@@ -31,7 +31,7 @@ if __name__ == "__main__":
     arm.sweep(coords[0,0],coords[0,1],10,0,-180,180)
     time.sleep(0.5)
     
-    for i in len(coords):
+    for i in range(len(coords)):
         arm.sweep(coords[i,0],coords[i,1],10,0,-180,180)
         time.sleep(0.1)
         
