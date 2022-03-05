@@ -2,6 +2,7 @@
 # coding=utf8
 import sys
 sys.path.append('/home/pi/School/RobotSystems/ArmPi/')
+sys.path.append('/home/ryan/Documents/RobotSystems/RobotSystems/ArmPi')
 import time
 from math import sqrt
 from LABConfig import *
@@ -91,6 +92,7 @@ if __name__ == "__main__":
         a = int(a)
         a1 = int(a1)
         a2 = int(a2)
+        print(type(a))
         print(f"x: {x}, y: {y}, z: {z}, a: {a}, a1: {a1}, a2 {a2}")
         print(f"Moving...")
         arm.sweep(x,y,z,a,a1,2)
