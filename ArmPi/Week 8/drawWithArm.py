@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 # coding=utf8
+import numpy as np
 import sys
+import pandas as pd
 sys.path.append('/home/pi/School/RobotSystems/ArmPi/')
 sys.path.append('/home/ryan/Documents/RobotSystems/RobotSystems/ArmPi')
 import time
@@ -18,4 +20,16 @@ from doodleInput import DoodleInput
 if __name__ == "__main__":
     arm = Motion()
     doodle = DoodleInput()
-    print("HERE")
+    
+    coords = pd.read_csv('draw_coords.csv')
+    coords = coords.to_numpy()
+    coords = coords/10
+    
+    print("Starting Masta' Peace! (˘ ³˘)♥ ")
+    
+    for i in len(test):
+        arm.sweep(coords[i,0],coords[i,1],10,0,-180,180)
+        time.sleep(0.1)
+        
+    print("All done!")
+    
